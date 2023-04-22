@@ -16,7 +16,7 @@ exports.regUser = (req, res) => {
 
   if (!userinfo.username || !userinfo.password) {
     return res.send({
-      status: 1,
+      code: 500,
       message: "用户名或者密码不能为空",
     });
   }
@@ -79,14 +79,14 @@ exports.login = (req, res) => {
     const user = { ...results[0], password: "", user_pic: "" };
     // 生成 Token 字符串
     const tokenStr = jwt.sign(user, config.jwtSecretKey, {
-      expiresIn: "10h", // token 有效期为 10 个小时
+      expiresIn: "72h", // token 有效期为 10 个小时
       algorithm: "HS256",
     });
     res.send({
-        status: 0,
+        code: 200,
         message: '登录成功！',
         // 为了方便客户端使用 Token，在服务器端直接拼接上 Bearer 的前缀
-        token: 'Bearer ' + tokenStr,
+        result: 'Bearer ' + tokenStr,
       })
       
   });

@@ -17,9 +17,9 @@ exports.getUserInfo = (req, res) => {
 
     // 3. 将用户信息响应给客户端
     res.send({
-      status: 0,
+      code: 200,
       message: "获取用户基本信息成功！",
-      data: results[0],
+      result: results[0],
     });
   });
 };
