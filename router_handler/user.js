@@ -86,7 +86,7 @@ exports.login = (req, res) => {
         code: 200,
         message: '登录成功！',
         // 为了方便客户端使用 Token，在服务器端直接拼接上 Bearer 的前缀
-        result: 'Bearer ' + tokenStr,
+        data: 'Bearer ' + tokenStr,
       })
       
   });
